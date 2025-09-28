@@ -31,16 +31,102 @@
     <script type="importmap">
     {
       "imports": {
-        "react": "https://esm.sh/react@18",
-        "react-dom/client": "https://esm.sh/react-dom@18/client",
-        "react/": "https://esm.sh/react@18/"
+        "react": "https://unpkg.com/react@18/umd/react.development.js",
+        "react-dom/client": "https://unpkg.com/react-dom@18/umd/react-dom.development.js"
       }
     }
     </script>
 </head>
-<body>
+<body class="bg-gray-50 font-pretendard">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Fallback content while React loads -->
+        <div class="flex min-h-screen">
+            <!-- 사이드바 -->
+            <nav class="w-72 bg-white border-r border-gray-200 fixed h-screen overflow-y-auto sidebar-shadow">
+                <!-- 헤더 -->
+                <div class="p-5 border-b border-gray-200">
+                    <h1 class="text-lg font-bold text-red-500 mb-1">AI 활용 완벽 가이드</h1>
+                    <p class="text-xs text-gray-500">프롬프트 & 컨텍스트 엔지니어링</p>
+                </div>
+
+                <!-- 네비게이션 -->
+                <div class="py-4">
+                    <!-- 시작 섹션 -->
+                    <div class="mb-6">
+                        <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                            시작
+                        </div>
+                        <div class="nav-item-active px-5 py-2 text-sm cursor-pointer transition-all duration-200">
+                            강사 소개
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                            학습 목표
+                        </div>
+                    </div>
+
+                    <!-- Part 1 섹션 -->
+                    <div class="mb-6">
+                        <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                            Part 1. 프롬프트 엔지니어링
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                            1장: 프롬프트의 중요성
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                            2장: 핵심 공식 6가지
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                            공식 1: CO-STAR
+                        </div>
+                    </div>
+
+                    <!-- Part 2 섹션 -->
+                    <div class="mb-6">
+                        <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                            Part 2. 컨텍스트 엔지니어링
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                            4장: 컨텍스트의 이해
+                        </div>
+                        <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                            5장: 컨텍스트 기법 5가지
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 메인 컨텐츠 -->
+            <main class="ml-72 flex-1 bg-white min-h-screen">
+                <div class="px-20 py-16 text-center">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-5xl font-bold text-gray-800 mb-6 tracking-tight">
+                            AI 활용 완벽 가이드
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-12 font-medium">
+                            프롬프트 & 컨텍스트 엔지니어링 강의안
+                        </p>
+                        <div class="text-lg text-gray-700 font-medium">
+                            이 상 수
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        // Simple fallback navigation
+        document.querySelectorAll('.nav-item-hover, .nav-item-active').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active state from all items
+                document.querySelectorAll('.nav-item-active').forEach(activeItem => {
+                    activeItem.className = activeItem.className.replace('nav-item-active', 'nav-item-hover');
+                });
+                // Add active state to clicked item
+                this.className = this.className.replace('nav-item-hover', 'nav-item-active');
+            });
+        });
+    </script>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
