@@ -1,0 +1,23 @@
+{
+  "name": "ai-prompt-engineering-guide",
+  "version": "1.0.0",
+  "description": "프롬프트 엔지니어링 가이드 저장소",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site, no build required'",
+    "start": "echo 'Static site'"
+  },
+  "keywords": [
+    "ai",
+    "prompt-engineering",
+    "guide",
+    "documentation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/ai-prompt-engineering-guide.git"
+  },
+  "homepage": "https://github.com/username/ai-prompt-engineering-guide#readme"
+}
