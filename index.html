@@ -3,145 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Engineering Guide</title>
+    <title>AI 활용 완벽 가이드</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             color: #333;
-        }
-
-        h1 {
-            color: #2563eb;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
-
-        h2 {
-            color: #374151;
-            margin-top: 2rem;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
         }
 
         .container {
-            background: #f9fafb;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+            display: flex;
+            min-height: 100vh;
         }
 
-        .footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e5e7eb;
+        /* 사이드바 */
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #e9ecef;
+            padding: 20px 0;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            color: #e74c3c;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-section-title {
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #495057;
+            background: #f8f9fa;
+            border-left: 3px solid #e74c3c;
+        }
+
+        .nav-item {
+            padding: 8px 20px;
+            color: #6c757d;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: #f8f9fa;
+            color: #495057;
+        }
+
+        .nav-item.active {
+            background: #fff5f5;
+            color: #e74c3c;
+            border-left-color: #e74c3c;
+        }
+
+        /* 메인 컨텐츠 */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 60px 80px;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .main-header {
             text-align: center;
-            color: #6b7280;
+            margin-bottom: 60px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .main-subtitle {
+            font-size: 20px;
+            color: #6c757d;
+            margin-bottom: 40px;
+        }
+
+        .author {
+            font-size: 18px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .search-box {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 14px;
+            background: #f8f9fa;
+        }
+
+        .search-input::placeholder {
+            color: #adb5bd;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .main-title {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>프롬프트 엔지니어링 강의안</h1>
-        <p>효과적인 AI 프롬프트 작성법을 배워보세요</p>
-    </header>
-
-    <main>
-        <section class="container">
-            <h2>강의 목표</h2>
-            <ul>
-                <li>프롬프트 엔지니어링의 기본 개념 이해</li>
-                <li>효과적인 프롬프트 작성 기법 습득</li>
-                <li>다양한 AI 모델과의 상호작용 최적화</li>
-                <li>실무에서 활용 가능한 프롬프트 패턴 학습</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>1. 프롬프트 엔지니어링 기초</h2>
-            <h3>1.1 프롬프트란?</h3>
-            <p>프롬프트는 AI 모델에게 주어지는 입력 텍스트로, 원하는 결과를 얻기 위한 지시사항입니다.</p>
-
-            <h3>1.2 좋은 프롬프트의 특징</h3>
-            <ul>
-                <li><strong>명확성:</strong> 구체적이고 명확한 지시</li>
-                <li><strong>맥락성:</strong> 충분한 배경 정보 제공</li>
-                <li><strong>구조화:</strong> 논리적인 순서와 구조</li>
-                <li><strong>목적성:</strong> 원하는 결과에 대한 명확한 설명</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>2. 기본 프롬프트 기법</h2>
-            <h3>2.1 Zero-shot 프롬프팅</h3>
-            <p>예시 없이 직접적인 지시만으로 작업을 수행하도록 하는 기법</p>
-            <div class="container">
-                <strong>예시:</strong><br>
-                "다음 문장을 한국어로 번역해주세요: 'Hello, how are you?'"
+    <div class="container">
+        <!-- 사이드바 -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">AI 활용 완벽 가이드</div>
+                <div class="sidebar-subtitle">프롬프트 & 컨텍스트 엔지니어링</div>
             </div>
 
-            <h3>2.2 Few-shot 프롬프팅</h3>
-            <p>몇 개의 예시를 제공하여 패턴을 학습하도록 하는 기법</p>
-            <div class="container">
-                <strong>예시:</strong><br>
-                "긍정 → 부정으로 변환:<br>
-                좋다 → 나쁘다<br>
-                밝다 → 어둡다<br>
-                빠르다 → ?"
-            </div>
-        </section>
-
-        <section>
-            <h2>3. 고급 프롬프트 기법</h2>
-            <h3>3.1 Chain-of-Thought (CoT)</h3>
-            <p>단계별 사고 과정을 명시적으로 요청하는 기법</p>
-            <div class="container">
-                "문제를 단계별로 해결해주세요:<br>
-                1. 문제 분석<br>
-                2. 해결 방법 도출<br>
-                3. 결과 검증"
+            <div class="nav-section">
+                <div class="nav-section-title">시작</div>
+                <div class="nav-item active">강사 소개</div>
+                <div class="nav-item">학습 목표</div>
             </div>
 
-            <h3>3.2 Role-based 프롬프팅</h3>
-            <p>AI에게 특정 역할을 부여하여 전문성을 높이는 기법</p>
-            <div class="container">
-                "당신은 경험 많은 데이터 과학자입니다. 다음 데이터를 분석해주세요..."
+            <div class="nav-section">
+                <div class="nav-section-title">Part 1. 프롬프트 엔지니어링</div>
+                <div class="nav-item">1장: 프롬프트의 중요성</div>
+                <div class="nav-item">2장: 핵심 공식 6가지</div>
+                <div class="nav-item">공식 1: CO-STAR</div>
+                <div class="nav-item">공식 2: PTCF</div>
+                <div class="nav-item">공식 3: CLEAR</div>
+                <div class="nav-item">공식 4: RISE</div>
+                <div class="nav-item">공식 5: SMART</div>
+                <div class="nav-item">공식 6: 5W1H</div>
+                <div class="nav-item">3장: 초월 전략</div>
             </div>
-        </section>
 
-        <section>
-            <h2>4. 실습 과제</h2>
-            <ol>
-                <li>간단한 요약 프롬프트 작성하기</li>
-                <li>창의적 글쓰기 프롬프트 설계하기</li>
-                <li>문제 해결을 위한 CoT 프롬프트 만들기</li>
-                <li>전문가 역할 프롬프트 개발하기</li>
-            </ol>
-        </section>
+            <div class="nav-section">
+                <div class="nav-section-title">Part 2. 컨텍스트 엔지니어링</div>
+                <div class="nav-item">4장: 컨텍스트의 이해</div>
+                <div class="nav-item">5장: 컨텍스트 기법 5가지</div>
+                <div class="nav-item">기법 1: 역할 할당법</div>
+                <div class="nav-item">기법 2: 데이터 기법</div>
+                <div class="nav-item">기법 3: 시나리오 기법</div>
+                <div class="nav-item">기법 4: 단계별 학습</div>
+                <div class="nav-item">기법 5: 피드백 순환</div>
+                <div class="nav-item">6장: 실전 활용</div>
+            </div>
 
-        <section>
-            <h2>5. 베스트 프랙티스</h2>
-            <ul>
-                <li>구체적이고 명확한 지시사항 제공</li>
-                <li>원하는 출력 형태 명시</li>
-                <li>제약사항과 조건 명확히 설정</li>
-                <li>반복 테스트를 통한 프롬프트 개선</li>
-                <li>모델의 한계 이해하고 활용</li>
-            </ul>
-        </section>
-    </main>
+            <div class="nav-section">
+                <div class="nav-item">본문 삽입의 예제적</div>
+                <div class="nav-item">오늘부터 실천하기</div>
+                <div class="nav-item">출처의</div>
+                <div class="nav-item">다음 단계</div>
+            </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 AI Prompt Engineering Guide. All rights reserved.</p>
-    </footer>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="'시작' 슬라이드에 대해 Gemini에게 질문해보세요...">
+            </div>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <main class="main-content">
+            <div class="main-header">
+                <h1 class="main-title">AI 활용 완벽 가이드</h1>
+                <p class="main-subtitle">프롬프트 & 컨텍스트 엔지니어링 강의안</p>
+                <div class="author">이 상 수</div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
