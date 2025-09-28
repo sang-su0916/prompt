@@ -4,220 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 활용 완벽 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .container {
-            display: flex;
-            min-height: 100vh;
+        .nav-item-hover:hover {
+            background-color: #f8fafc;
+            color: #334155;
         }
 
-        /* 사이드바 */
-        .sidebar {
-            width: 280px;
-            background: white;
-            border-right: 1px solid #e9ecef;
-            padding: 20px 0;
-            overflow-y: auto;
-            position: fixed;
-            height: 100vh;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        .nav-item-active {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border-left: 3px solid #dc2626;
         }
 
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid #e9ecef;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-title {
-            color: #e74c3c;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .sidebar-subtitle {
-            color: #6c757d;
-            font-size: 12px;
-        }
-
-        .nav-section {
-            margin-bottom: 25px;
-        }
-
-        .nav-section-title {
-            padding: 8px 20px;
-            font-size: 13px;
-            font-weight: bold;
-            color: #495057;
-            background: #f8f9fa;
-            border-left: 3px solid #e74c3c;
-        }
-
-        .nav-item {
-            padding: 8px 20px;
-            color: #6c757d;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            background: #f8f9fa;
-            color: #495057;
-        }
-
-        .nav-item.active {
-            background: #fff5f5;
-            color: #e74c3c;
-            border-left-color: #e74c3c;
-        }
-
-        /* 메인 컨텐츠 */
-        .main-content {
-            margin-left: 280px;
-            flex: 1;
-            padding: 60px 80px;
-            background: white;
-            min-height: 100vh;
-        }
-
-        .main-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .main-subtitle {
-            font-size: 20px;
-            color: #6c757d;
-            margin-bottom: 40px;
-        }
-
-        .author {
-            font-size: 18px;
-            color: #495057;
-            font-weight: 500;
-        }
-
-        .search-box {
-            position: absolute;
-            bottom: 30px;
-            left: 20px;
-            right: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #e9ecef;
-            border-radius: 25px;
-            font-size: 14px;
-            background: #f8f9fa;
-        }
-
-        .search-input::placeholder {
-            color: #adb5bd;
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 20px;
-            }
-
-            .main-title {
-                font-size: 32px;
-            }
+        .sidebar-shadow {
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
         }
     </style>
 </head>
-<body>
-    <div class="container">
+<body class="bg-gray-50 font-pretendard">
+    <div class="flex min-h-screen">
         <!-- 사이드바 -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-title">AI 활용 완벽 가이드</div>
-                <div class="sidebar-subtitle">프롬프트 & 컨텍스트 엔지니어링</div>
+        <nav class="w-72 bg-white border-r border-gray-200 fixed h-screen overflow-y-auto sidebar-shadow">
+            <!-- 헤더 -->
+            <div class="p-5 border-b border-gray-200">
+                <h1 class="text-lg font-bold text-red-500 mb-1">AI 활용 완벽 가이드</h1>
+                <p class="text-xs text-gray-500">프롬프트 & 컨텍스트 엔지니어링</p>
             </div>
 
-            <div class="nav-section">
-                <div class="nav-section-title">시작</div>
-                <div class="nav-item active">강사 소개</div>
-                <div class="nav-item">학습 목표</div>
+            <!-- 네비게이션 -->
+            <div class="py-4">
+                <!-- 시작 섹션 -->
+                <div class="mb-6">
+                    <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                        시작
+                    </div>
+                    <div class="nav-item-active px-5 py-2 text-sm cursor-pointer transition-all duration-200">
+                        강사 소개
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        학습 목표
+                    </div>
+                </div>
+
+                <!-- Part 1 섹션 -->
+                <div class="mb-6">
+                    <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                        Part 1. 프롬프트 엔지니어링
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        1장: 프롬프트의 중요성
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        2장: 핵심 공식 6가지
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 1: CO-STAR
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 2: PTCF
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 3: CLEAR
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 4: RISE
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 5: SMART
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        공식 6: 5W1H
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        3장: 초월 전략
+                    </div>
+                </div>
+
+                <!-- Part 2 섹션 -->
+                <div class="mb-6">
+                    <div class="px-5 py-2 text-sm font-semibold text-gray-700 bg-gray-50 border-l-4 border-red-500">
+                        Part 2. 컨텍스트 엔지니어링
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        4장: 컨텍스트의 이해
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        5장: 컨텍스트 기법 5가지
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        기법 1: 역할 할당법
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        기법 2: 데이터 기법
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        기법 3: 시나리오 기법
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        기법 4: 단계별 학습
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover pl-8">
+                        기법 5: 피드백 순환
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        6장: 실전 활용
+                    </div>
+                </div>
+
+                <!-- 기타 섹션 -->
+                <div class="mb-6">
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        본문 삽입의 예제적
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        오늘부터 실천하기
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        출처의
+                    </div>
+                    <div class="px-5 py-2 text-sm text-gray-600 cursor-pointer transition-all duration-200 nav-item-hover">
+                        다음 단계
+                    </div>
+                </div>
             </div>
 
-            <div class="nav-section">
-                <div class="nav-section-title">Part 1. 프롬프트 엔지니어링</div>
-                <div class="nav-item">1장: 프롬프트의 중요성</div>
-                <div class="nav-item">2장: 핵심 공식 6가지</div>
-                <div class="nav-item">공식 1: CO-STAR</div>
-                <div class="nav-item">공식 2: PTCF</div>
-                <div class="nav-item">공식 3: CLEAR</div>
-                <div class="nav-item">공식 4: RISE</div>
-                <div class="nav-item">공식 5: SMART</div>
-                <div class="nav-item">공식 6: 5W1H</div>
-                <div class="nav-item">3장: 초월 전략</div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Part 2. 컨텍스트 엔지니어링</div>
-                <div class="nav-item">4장: 컨텍스트의 이해</div>
-                <div class="nav-item">5장: 컨텍스트 기법 5가지</div>
-                <div class="nav-item">기법 1: 역할 할당법</div>
-                <div class="nav-item">기법 2: 데이터 기법</div>
-                <div class="nav-item">기법 3: 시나리오 기법</div>
-                <div class="nav-item">기법 4: 단계별 학습</div>
-                <div class="nav-item">기법 5: 피드백 순환</div>
-                <div class="nav-item">6장: 실전 활용</div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-item">본문 삽입의 예제적</div>
-                <div class="nav-item">오늘부터 실천하기</div>
-                <div class="nav-item">출처의</div>
-                <div class="nav-item">다음 단계</div>
-            </div>
-
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="'시작' 슬라이드에 대해 Gemini에게 질문해보세요...">
+            <!-- 검색창 -->
+            <div class="absolute bottom-8 left-5 right-5">
+                <input
+                    type="text"
+                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                    placeholder="'시작' 슬라이드에 대해 Gemini에게 질문해보세요..."
+                >
             </div>
         </nav>
 
         <!-- 메인 컨텐츠 -->
-        <main class="main-content">
-            <div class="main-header">
-                <h1 class="main-title">AI 활용 완벽 가이드</h1>
-                <p class="main-subtitle">프롬프트 & 컨텍스트 엔지니어링 강의안</p>
-                <div class="author">이 상 수</div>
+        <main class="ml-72 flex-1 bg-white min-h-screen">
+            <div class="px-20 py-16 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl font-bold text-gray-800 mb-6 tracking-tight">
+                        AI 활용 완벽 가이드
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-12 font-medium">
+                        프롬프트 & 컨텍스트 엔지니어링 강의안
+                    </p>
+                    <div class="text-lg text-gray-700 font-medium">
+                        이 상 수
+                    </div>
+                </div>
             </div>
         </main>
     </div>
+
+    <script>
+        // 반응형 사이드바 토글 (모바일)
+        const sidebar = document.querySelector('nav');
+        const mainContent = document.querySelector('main');
+
+        function toggleSidebar() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('-translate-x-full');
+            }
+        }
+
+        // 네비게이션 아이템 클릭 핸들러
+        document.querySelectorAll('.nav-item-hover, .nav-item-active').forEach(item => {
+            item.addEventListener('click', function() {
+                // 모든 아이템의 활성 상태 제거
+                document.querySelectorAll('.nav-item-active').forEach(activeItem => {
+                    activeItem.classList.remove('nav-item-active');
+                    activeItem.classList.add('nav-item-hover');
+                });
+
+                // 클릭된 아이템에 활성 상태 추가
+                this.classList.remove('nav-item-hover');
+                this.classList.add('nav-item-active');
+            });
+        });
+
+        // 윈도우 리사이즈 핸들러
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('-translate-x-full');
+            }
+        });
+    </script>
 </body>
 </html>
